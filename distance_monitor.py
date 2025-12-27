@@ -2,7 +2,7 @@ import asyncio
 from gpiozero import DistanceSensor
 from gpiozero.pins.pigpio import PiGPIOFactory
 import logging
-from async_worker import AsyncWorker
+from .async_worker import AsyncWorker
 
 MIN_WAIT_INTERVAL_s = 0.3
 
@@ -22,7 +22,7 @@ class DistanceMonitor:
         )
 
     def print_distance_cm(self):
-        logging.info(f"Distance: {self.get_distance_cm()} cm")
+        logging.debug(f"Distance: {self.get_distance_cm()} cm")
 
     def get_distance_cm(self) -> float:
         return self._sensor.distance * 100
